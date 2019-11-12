@@ -19,4 +19,11 @@ public class CheckPrimeNumberTest {
         boolean rsl = prime.check(4);
         assertThat(rsl, is(false));
     }
+
+    @Test
+    public void when1() {
+        CheckPrimeNumber prime = new CheckPrimeNumber();
+        boolean rsl = prime.check(1);
+        assertThat(rsl, is(true));
+    }
 }
