@@ -1,4 +1,3 @@
-
 /**
  * Package for calculate task
  *

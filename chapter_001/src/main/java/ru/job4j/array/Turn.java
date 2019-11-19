@@ -4,10 +4,10 @@ public class Turn {
     public int[] back(int[] array) {
         int temp;
         int bound = array.length - 1;
-        for (int i = 0; i <= (bound/2); i++) {
+        for (int i = 0; i <= (bound / 2); i++) {
             temp = array[i];
-            array[i] = array[bound-i];
-            array[bound-i] = temp;
+            array[i] = array[bound - i];
+            array[bound - i] = temp;
         }
         return array;
     }

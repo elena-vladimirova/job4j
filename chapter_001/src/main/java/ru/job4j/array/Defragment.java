@@ -7,7 +7,7 @@ public class Defragment {
             if (array[index] == null) {
                 innerIndex = index;
                 do {
-                    if (array[innerIndex] != null){
+                    if (array[innerIndex] != null) {
                         array[index] = array[innerIndex];
                         array[innerIndex] = null;
                         break;

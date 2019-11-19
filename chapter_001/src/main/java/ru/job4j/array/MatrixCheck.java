@@ -10,12 +10,14 @@ public class MatrixCheck {
             countXByRow = 0;
             countXByColl = 0;
             for (int j = 0; j < board.length; j++) {
-                if (x == board [i][j])
+                if (x == board[i][j]) {
                     countXByRow += 1;
-                if (x == board [j][i])
+                }
+                if (x == board[j][i]) {
                     countXByColl += 1;
+                }
             }
-            if ((countXByRow == board.length)||(countXByColl == board.length)) {
+            if ((countXByRow == board.length) || (countXByColl == board.length)) {
                 result = true;
                 break;
             }

@@ -8,7 +8,7 @@ public class SortSelected {
         int index;
         int temp;
 
-        for (int i = 0; i < data.length - 1; i++){
+        for (int i = 0; i < data.length - 1; i++) {
             min = MinDiapason.findMin(data, i, data.length - 1);
             index = FindLoop.indexOf(data, min, i, data.length - 1);
             temp = data[i];
