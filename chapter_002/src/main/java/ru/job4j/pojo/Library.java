@@ -2,6 +2,16 @@ package ru.job4j.pojo;
 
 public class Library {
 
+    public static Book[] delete(Book[] books, int index){
+
+        for (int i = index; i < books.length-1; i++){
+            books[i] = books[i+1];
+        }
+        books[books.length-1] = null;
+        return books;
+
+    }
+
     public static void main(String[] args) {
 
         Book[] books = {new Book ("Clean Code", 10),
@@ -28,5 +38,17 @@ public class Library {
                 System.out.println(b.getName() + " " + b.getPageCount());
             }
         }
+
+
+        System.out.println("--------------");
+        books = delete(books, 0);
+        for (Book b : books) {
+            if (b != null) {
+                System.out.println(b.getName() + " " + b.getPageCount());
+            } else {
+                System.out.println("null");
+            }
+        }
+
     }
 }
