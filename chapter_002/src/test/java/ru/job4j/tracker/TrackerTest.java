@@ -48,7 +48,7 @@ public class TrackerTest {
     @Test
     public void whenFindAllThenReturnNull() {
         Tracker tracker = new Tracker();
-        Item[] expected = null;
+        Item[] expected = {};
         Item[] result = tracker.findAll();
         assertThat(result, is(expected));
     }

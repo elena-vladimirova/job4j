@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -40,9 +41,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item i : this.items) {
-            if (i.getId().equals(id)) {
-                result = i;
+        for (int i = 0; i < position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                result = this.items[i];
                 break;
             }
         }
@@ -70,21 +71,7 @@ public class Tracker {
      * @return Массив найденных заявок.
      */
     public Item[] findAll() {
-        int nullIndex = 0;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] == null) {
-                nullIndex = i;
-                break;
-            }
-        }
-        Item[] result = null;
-        if (nullIndex > 0) {
-            result = new Item[nullIndex];
-            for (int i = 0; i < nullIndex; i++) {
-                result[i] = this.items[i];
-            }
-        }
-        return result;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -96,15 +83,10 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         Item replaced = this.findById(id);
-        //if (replaced != null) {
-        //    replaced.setName(item.getName());
-        //    replaced.setId(this.generateId());
-        //    result = true;
-        //}
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (this.items[i].getId() == id) {
                 this.items[i] = item;
-                this.items[i].setId(this.generateId());
+                this.items[i].setId(id);
                 result = true;
                 break;
             }
@@ -119,14 +101,22 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (id.equals(this.items[i].getId())) {
                 System.arraycopy(this.items, i + 1, this.items, i, this.items.length - i - 1);
                 this.items[this.items.length - 1] = null;
                 result = true;
+                position--;
                 break;
             }
         }
         return result;
     }
+
+    public static void main(String[] args) {
+        Tracker tracker = new Tracker();
+        Item i = tracker.findById("11");
+
+    }
+
 }
