@@ -24,10 +24,24 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = new Item[100];
+        Item[] expected = new Item[2];
         expected[0] = item1;
         expected[1] = item2;
         Item[] result = tracker.findByName("test1");
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenFindByNameThenReturnNull() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1");
+        Item item2 = new Item("test2");
+        Item item3 = new Item("test3");
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        Item[] expected = {};
+        Item[] result = tracker.findByName("test4");
         assertThat(result, is(expected));
     }
 

@@ -56,14 +56,14 @@ public class Tracker {
      * @return Массив найденных заявок.
      */
     public Item[] findByName(String name) {
-        Item[] result = new Item[100];
+        Item[] result = new Item[position];
         int index = 0;
-        for (Item i : this.items) {
-            if (i != null && i.getName().equals(name)) {
-                result[index++] = i;
+        for (int i = 0; i < position; i++) {
+            if (this.items[i].getName().equals(name)) {
+                result[index++] = this.items[i];
             }
         }
-        return result;
+        return Arrays.copyOf(result, index);
     }
 
     /**
@@ -82,7 +82,6 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        Item replaced = this.findById(id);
         for (int i = 0; i < position; i++) {
             if (this.items[i].getId() == id) {
                 this.items[i] = item;
