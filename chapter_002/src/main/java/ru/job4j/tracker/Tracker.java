@@ -83,7 +83,7 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
-            if (this.items[i].getId() == id) {
+            if (this.items[i].getId().equals(id)) {
                 this.items[i] = item;
                 this.items[i].setId(id);
                 result = true;
@@ -93,11 +93,7 @@ public class Tracker {
         return result;
     }
 
-    /**
-     * Метод удаляет заявку по id со смещением массива заявок влево.
-     * @param id id заявки
-     * @return true, если заявка удалена, иначе - false
-     */
+
     public boolean delete(String id) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
