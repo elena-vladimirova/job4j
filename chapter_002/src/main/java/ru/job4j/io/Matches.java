@@ -13,21 +13,19 @@ public class Matches {
             int playersMove = Integer.valueOf(input.nextLine());
             if (playersMove < 1 || playersMove > 3 || playersMove > matches) {
                 System.out.println("Выбрано неверное количество спичек.");
-                continue;
-            }
-            matches -= playersMove;
-            if (matches == 0) {
-                System.out.println("Вы победили");
-
             } else {
-                int progMove = Math.min((new Random().nextInt(2) + 1), matches);
-                System.out.println("Ход программы: " + progMove);
-                matches -= progMove;
+                matches -= playersMove;
                 if (matches == 0) {
-                    System.out.println("Вы проиграли");
+                    System.out.println("Вы победили");
+                } else {
+                    int progMove = Math.min((new Random().nextInt(2) + 1), matches);
+                    System.out.println("Ход программы: " + progMove);
+                    matches -= progMove;
+                    if (matches == 0) {
+                        System.out.println("Вы проиграли");
+                    }
                 }
             }
-
         }
     }
 }
