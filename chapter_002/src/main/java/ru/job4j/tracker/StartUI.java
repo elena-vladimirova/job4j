@@ -7,6 +7,47 @@ package ru.job4j.tracker;
  */
 public class StartUI {
 
+    public static void createItem(Input input, Tracker tracker) {
+        System.out.println("=== Add new Item ====");
+        String newItemName = input.askStr("Enter name: ");
+        System.out.println(tracker.add(new Item(newItemName)));
+    }
+
+    public static void showItems(Input input, Tracker tracker) {
+        for (Item i : tracker.findAll()) {
+            System.out.println(i);
+        }
+    }
+
+    public static void editItem(Input input, Tracker tracker) {
+        System.out.println("=== Edit item ====");
+        String replacedId = input.askStr("Enter id: ");
+        String changedName = input.askStr("Enter a new item name: ");
+        boolean replaced = tracker.replace(replacedId, new Item(changedName));
+        System.out.println((replaced == true)?"Item changed":"Item not changed");
+    }
+
+    public static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("=== Delete item ====");
+        String idToDelete = input.askStr("Enter id: ");
+        boolean deleted = tracker.delete(idToDelete);
+        System.out.println((deleted == true)?"Item deleted":"Item not deleted");
+    }
+
+    public static void findItembyId(Input input, Tracker tracker) {
+        System.out.println("=== Find item by Id ====");
+        String idToFind = input.askStr("Enter id: ");
+        System.out.println(tracker.findById(idToFind));
+    }
+
+    public static void findItembyname(Input input, Tracker tracker) {
+        System.out.println("=== Find items by name ====");
+        String nameToFind = input.askStr("Enter name: ");
+        for (Item i : tracker.findByName(nameToFind)) {
+            System.out.println(i);
+        }
+    }
+
     /**
      * Метод выподит меню и выполняет запросы пользователя
      * @param input интерфейс для работы с системой ввода-вывода
@@ -19,40 +60,22 @@ public class StartUI {
             int select = input.askInt("Select: ");
             switch (select) {
                 case 0 :
-                    System.out.println("=== Add new Item ====");
-                    String newItemName = input.askStr("Enter name: ");
-                    System.out.println(tracker.add(new Item(newItemName)));
+                    StartUI.createItem(input, tracker);
                     break;
                 case 1 :
-                    System.out.println("=== Show all items ====");
-                    for (Item i : tracker.findAll()) {
-                        System.out.println(i);
-                    }
+                    StartUI.showItems(input, tracker);
                     break;
                 case 2 :
-                    System.out.println("=== Edit item ====");
-                    String replacedId = input.askStr("Enter id: ");
-                    String changedName = input.askStr("Enter a new item name: ");
-                    boolean replaced = tracker.replace(replacedId, new Item(changedName));
-                    System.out.println((replaced == true)?"Item changed":"Item not changed");
+                    StartUI.editItem(input, tracker);
                     break;
                 case 3 :
-                    System.out.println("=== Delete item ====");
-                    String idToDelete = input.askStr("Enter id: ");
-                    boolean deleted = tracker.delete(idToDelete);
-                    System.out.println((deleted == true)?"Item deleted":"Item not deleted");
+                    StartUI.deleteItem(input, tracker);
                     break;
                 case 4:
-                    System.out.println("=== Find item by Id ====");
-                    String idToFind = input.askStr("Enter id: ");
-                    System.out.println(tracker.findById(idToFind));
+                    StartUI.findItembyId(input, tracker);
                     break;
                 case 5:
-                    System.out.println("=== Find items by name ====");
-                    String nameToFind = input.askStr("Enter name: ");
-                    for (Item i : tracker.findByName(nameToFind)) {
-                        System.out.println(i);
-                    }
+                    StartUI.findItembyname(input, tracker);
                     break;
                 case 6 :
                     run = false;
