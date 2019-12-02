@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
-
 /**
  * Консольное приложение для работы с классом Tracker.
  *
@@ -11,20 +9,18 @@ public class StartUI {
 
     /**
      * Метод выподит меню и выполняет запросы пользователя
-     * @param scanner входящий поток
+     * @param input интерфейс для работы с системой ввода-вывода
      * @param tracker объект Tracker
      */
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.println("Select: ");
-            int select = Integer.valueOf(scanner.nextLine());
+            int select = input.askInt("Select: ");
             switch (select) {
                 case 0 :
                     System.out.println("=== Add new Item ====");
-                    System.out.println("Enter name: ");
-                    String newItemName = scanner.nextLine();
+                    String newItemName = input.askStr("Enter name: ");
                     System.out.println(tracker.add(new Item(newItemName)));
                     break;
                 case 1 :
@@ -35,30 +31,25 @@ public class StartUI {
                     break;
                 case 2 :
                     System.out.println("=== Edit item ====");
-                    System.out.println("Enter id: ");
-                    String replacedId = scanner.nextLine();
-                    System.out.println("Enter a new item name: ");
-                    String changedName = scanner.nextLine();
+                    String replacedId = input.askStr("Enter id: ");
+                    String changedName = input.askStr("Enter a new item name: ");
                     boolean replaced = tracker.replace(replacedId, new Item(changedName));
                     System.out.println((replaced == true)?"Item changed":"Item not changed");
                     break;
                 case 3 :
                     System.out.println("=== Delete item ====");
-                    System.out.println("Enter id: ");
-                    String idToDelete = scanner.nextLine();
+                    String idToDelete = input.askStr("Enter id: ");
                     boolean deleted = tracker.delete(idToDelete);
                     System.out.println((deleted == true)?"Item deleted":"Item not deleted");
                     break;
                 case 4:
                     System.out.println("=== Find item by Id ====");
-                    System.out.println("Enter id: ");
-                    String idToFind = scanner.nextLine();
+                    String idToFind = input.askStr("Enter id: ");
                     System.out.println(tracker.findById(idToFind));
                     break;
                 case 5:
                     System.out.println("=== Find items by name ====");
-                    System.out.println("Enter name: ");
-                    String nameToFind = scanner.nextLine();
+                    String nameToFind = input.askStr("Enter name: ");
                     for (Item i : tracker.findByName(nameToFind)) {
                         System.out.println(i);
                     }
@@ -87,8 +78,8 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker);
     }
 }

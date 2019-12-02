@@ -93,7 +93,11 @@ public class Tracker {
         return result;
     }
 
-
+    /**
+     * Метод удаляет заявку по id со смещением массива заявок влево.
+     * @param id id заявки
+     * @return true, если заявка удалена, иначе - false
+     */
     public boolean delete(String id) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
