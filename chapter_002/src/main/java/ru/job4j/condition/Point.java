@@ -1,7 +1,7 @@
 package ru.job4j.condition;
 
-import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class Point {
 
@@ -13,7 +13,8 @@ public class Point {
 
     /**
      * Конструтор, который принимает начальное состояние объекта "точка"
-     * @param first координата x
+     *
+     * @param first  координата x
      * @param second координата y
      */
     public Point(int first, int second) {

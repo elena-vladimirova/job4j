@@ -7,7 +7,7 @@ public class College {
         Student s = new Student();
         s.setName("Жгуть Иван Иванович");
         s.setGroup("П127");
-        s.setMatriculationDate(new Date(2019,11,26));
+        s.setMatriculationDate(new Date(2019, 11, 26));
         System.out.println(s.getName() + " " + s.getGroup() + " " + s.getMatriculationDate());
     }
 }

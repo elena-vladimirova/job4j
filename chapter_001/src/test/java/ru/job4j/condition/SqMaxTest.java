@@ -11,21 +11,25 @@ public class SqMaxTest {
         int result = SqMax.max(4, 1, 2, 3);
         assertThat(result, is(4));
     }
+
     @Test
     public void whenSecondMax() {
         int result = SqMax.max(1, 4, 2, 3);
         assertThat(result, is(4));
     }
+
     @Test
     public void whenThirdMax() {
         int result = SqMax.max(1, 2, 4, 3);
         assertThat(result, is(4));
     }
+
     @Test
     public void whenFourthMax() {
         int result = SqMax.max(1, 2, 3, 4);
         assertThat(result, is(4));
     }
+
     @Test
     public void whenEqual() {
         int result = SqMax.max(4, 4, 4, 4);

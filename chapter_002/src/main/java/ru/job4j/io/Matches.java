@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Matches {
     public static void main(String[] args) {
         int matches = 11;
-        Scanner input = new Scanner (System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Игра 11. На столе лежат 11 спичек. Два игрока по очереди берут от 1 до 3 спичек. Выигрывает тот, кто забрал последние спички.");
         while (matches > 0) {
             System.out.println("Количество спичек: " + matches + " Ваш ход:");

@@ -10,13 +10,18 @@ import java.util.Random;
  */
 public class Tracker {
 
-    /** Массив для хранение заявок. */
+    /**
+     * Массив для хранение заявок.
+     */
     private final Item[] items = new Item[100];
-    /** Указатель ячейки для новой заявки. */
+    /**
+     * Указатель ячейки для новой заявки.
+     */
     private int position = 0;
 
     /**
      * Метод генерирует уникальный ключ для заявки.
+     *
      * @return Уникальный ключ.
      */
     private String generateId() {
@@ -26,6 +31,7 @@ public class Tracker {
 
     /**
      * Метод, реализаущий добавление заявки в хранилище.
+     *
      * @param item новая заявка
      */
     public Item add(Item item) {
@@ -36,6 +42,7 @@ public class Tracker {
 
     /**
      * Метод возвращает заявку по Id.
+     *
      * @param id идентификатор заявки
      * @return Найденная заявка.
      */
@@ -52,6 +59,7 @@ public class Tracker {
 
     /**
      * Метод возвращает заявки по name.
+     *
      * @param name описание заявки
      * @return Массив найденных заявок.
      */
@@ -68,6 +76,7 @@ public class Tracker {
 
     /**
      * Метод возвращает список заявок без null элементов.
+     *
      * @return Массив найденных заявок.
      */
     public Item[] findAll() {
@@ -76,7 +85,8 @@ public class Tracker {
 
     /**
      * Метод заменяет ячейку в массиве.
-     * @param id id заменяемой заявки
+     *
+     * @param id   id заменяемой заявки
      * @param item новая заявка
      * @return true, если заявка заменена, иначе - false
      */
@@ -95,6 +105,7 @@ public class Tracker {
 
     /**
      * Метод удаляет заявку по id со смещением массива заявок влево.
+     *
      * @param id id заявки
      * @return true, если заявка удалена, иначе - false
      */

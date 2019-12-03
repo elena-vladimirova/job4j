@@ -13,9 +13,9 @@ public class Triangle {
 
     /**
      * Метод вычисления полупериметра по длинам сторон.
-     *
+     * <p>
      * Формула.
-     *
+     * <p>
      * (a + b + c) / 2
      *
      * @param a расстояние между точками a b
@@ -29,11 +29,11 @@ public class Triangle {
 
     /**
      * Метод вычисляет площадь треугольника.
-     *
+     * <p>
      * Формула.
-     *
+     * <p>
      * √ p *(p - ab) * (p - ac) * (p - bc)
-     *
+     * <p>
      * где √ - корень квадратный.
      *
      * @return Возвращает площадь, если треугольник существует, или -1, если треугольник не существует.
@@ -59,6 +59,6 @@ public class Triangle {
      * @return
      */
     private boolean exist(double a, double c, double b) {
-        return (a + b > c)&&(a + c > b)&&(b + c > a);
+        return (a + b > c) && (a + c > b) && (b + c > a);
     }
 }

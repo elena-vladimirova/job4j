@@ -6,9 +6,13 @@ package ru.job4j.tracker;
  * @author Elena Vladimirova (avtobusova@mail.ru)
  */
 public class Item {
-    /** Идентификатор заявки. */
+    /**
+     * Идентификатор заявки.
+     */
     private String id;
-    /** Описание заявки. */
+    /**
+     * Описание заявки.
+     */
     private String name;
 
     public Item(String name) {

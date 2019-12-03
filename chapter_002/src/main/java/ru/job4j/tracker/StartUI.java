@@ -24,14 +24,14 @@ public class StartUI {
         String replacedId = input.askStr("Enter id: ");
         String changedName = input.askStr("Enter a new item name: ");
         boolean replaced = tracker.replace(replacedId, new Item(changedName));
-        System.out.println((replaced == true)?"Item changed":"Item not changed");
+        System.out.println(replaced  ? "Item changed" : "Item not changed");
     }
 
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
         String idToDelete = input.askStr("Enter id: ");
         boolean deleted = tracker.delete(idToDelete);
-        System.out.println((deleted == true)?"Item deleted":"Item not deleted");
+        System.out.println(deleted ? "Item deleted" : "Item not deleted");
     }
 
     public static void findItembyId(Input input, Tracker tracker) {
@@ -50,7 +50,8 @@ public class StartUI {
 
     /**
      * Метод выподит меню и выполняет запросы пользователя
-     * @param input интерфейс для работы с системой ввода-вывода
+     *
+     * @param input   интерфейс для работы с системой ввода-вывода
      * @param tracker объект Tracker
      */
     public void init(Input input, Tracker tracker) {
@@ -59,16 +60,16 @@ public class StartUI {
             this.showMenu();
             int select = input.askInt("Select: ");
             switch (select) {
-                case 0 :
+                case 0:
                     StartUI.createItem(input, tracker);
                     break;
-                case 1 :
+                case 1:
                     StartUI.showItems(input, tracker);
                     break;
-                case 2 :
+                case 2:
                     StartUI.editItem(input, tracker);
                     break;
-                case 3 :
+                case 3:
                     StartUI.deleteItem(input, tracker);
                     break;
                 case 4:
@@ -77,10 +78,10 @@ public class StartUI {
                 case 5:
                     StartUI.findItembyname(input, tracker);
                     break;
-                case 6 :
+                case 6:
                     run = false;
                     break;
-                default :
+                default:
                     System.out.println("Invalid menu item");
             }
         }
@@ -90,14 +91,14 @@ public class StartUI {
      * Метод выподит меню
      */
     private void showMenu() {
-        System.out.println("Menu.\n" +
-                           "0. Add new Item\n" +
-                           "1. Show all items\n" +
-                           "2. Edit item\n" +
-                           "3. Delete item\n" +
-                           "4. Find item by Id\n" +
-                           "5. Find items by name\n" +
-                           "6. Exit Program");
+        System.out.println("Menu.\n"
+               + "0. Add new Item\n"
+               + "1. Show all items\n"
+               + "2. Edit item\n"
+               + "3. Delete item\n"
+               + "4. Find item by Id\n"
+               + "5. Find items by name\n"
+               + "6. Exit Program");
     }
 
     public static void main(String[] args) {
