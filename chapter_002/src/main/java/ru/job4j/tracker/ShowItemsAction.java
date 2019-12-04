@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class ShowItems implements UserAction {
+public class ShowItemsAction implements UserAction {
     @Override
     public String name() {
         return "=== Show items ====";
