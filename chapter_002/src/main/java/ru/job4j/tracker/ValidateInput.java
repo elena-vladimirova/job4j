@@ -21,7 +21,7 @@ public class ValidateInput implements Input {
                 value = input.askInt(question);
                 invalid = false;
             } catch (NumberFormatException nfe) {
-                System.out.print("Please enter validate data again ");
+                System.out.println("Please enter validate data again ");
             }
         } while (invalid);
         return value;
@@ -36,9 +36,9 @@ public class ValidateInput implements Input {
                 value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
-                System.out.print("Please select key from menu ");
+                System.out.println("Please select key from menu ");
             } catch (NumberFormatException nfe) {
-                System.out.print("Please enter validate data again ");
+                System.out.println("Please enter validate data again ");
             }
         } while (invalid);
         return value;
