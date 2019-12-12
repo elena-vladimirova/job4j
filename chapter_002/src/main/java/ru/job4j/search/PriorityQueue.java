@@ -15,31 +15,16 @@ public class PriorityQueue {
     public void put(Task task) {
 
         int idx = 0;
-        if (this.tasks.size() == 0) {
-            this.tasks.add(idx, task);
-        } else {
+        if (this.tasks.size() != 0) {
             for (Task t : this.tasks) {
-                if (t.getPriority() < task.getPriority()) {
-                    idx++;
-                } else {
-                    this.tasks.add(idx, task);
+                if (t.getPriority() >= task.getPriority()) {
                     break;
+                } else {
+                    idx++;
                 }
             }
         }
-
-/*        ListIterator<Task> iterator = tasks.listIterator();
-        if (!iterator.hasNext()) {
-            tasks.add(task);
-        } else {
-            while (iterator.hasNext()) {
-                if (iterator.next().getPriority() >= task.getPriority()) {
-                    tasks.add(iterator.nextIndex() - 1, task);
-                    break;
-                }
-            }
-
-        }*/
+        this.tasks.add(idx, task);
     }
 
     public Task take() {
