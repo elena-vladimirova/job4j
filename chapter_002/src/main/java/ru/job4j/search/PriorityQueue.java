@@ -14,7 +14,21 @@ public class PriorityQueue {
      */
     public void put(Task task) {
 
-        ListIterator<Task> iterator = tasks.listIterator();
+        int idx = 0;
+        if (this.tasks.size() == 0) {
+            this.tasks.add(idx, task);
+        } else {
+            for (Task t : this.tasks) {
+                if (t.getPriority() < task.getPriority()) {
+                    idx++;
+                } else {
+                    this.tasks.add(idx, task);
+                    break;
+                }
+            }
+        }
+
+/*        ListIterator<Task> iterator = tasks.listIterator();
         if (!iterator.hasNext()) {
             tasks.add(task);
         } else {
@@ -25,7 +39,7 @@ public class PriorityQueue {
                 }
             }
 
-        }
+        }*/
     }
 
     public Task take() {
