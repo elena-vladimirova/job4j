@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertMatrix2List {
+
     public List<Integer> toList(int[][] array) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
@@ -13,4 +14,15 @@ public class ConvertMatrix2List {
         }
         return list;
     }
+
+    public List<Integer> toList(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] row : list) {
+            for (int cell : row) {
+                result.add(cell);
+            }
+        }
+        return result;
+    }
+
 }
