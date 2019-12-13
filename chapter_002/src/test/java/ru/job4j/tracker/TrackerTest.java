@@ -2,6 +2,10 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -25,10 +29,10 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = new Item[2];
-        expected[0] = item1;
-        expected[1] = item2;
-        Item[] result = tracker.findByName("test1");
+        List<Item> expected = new ArrayList();
+        expected.add(item1);
+        expected.add(item2);
+        List<Item> result = tracker.findByName("test1");
         assertThat(result, is(expected));
     }
 
@@ -41,9 +45,9 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = {};
-        Item[] result = tracker.findByName("test4");
-        assertThat(result, is(expected));
+        List<Item> expected = new ArrayList();
+        List<Item> result = tracker.findByName("test4");
+        assertThat(expected, is(result));
     }
 
     @Test
@@ -55,16 +59,16 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = {item1, item2, item3};
-        Item[] result = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item2, item3);
+        List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenFindAllThenReturnNull() {
         Tracker tracker = new Tracker();
-        Item[] expected = {};
-        Item[] result = tracker.findAll();
+        List<Item> expected = new ArrayList();
+        List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
     }
 
@@ -79,7 +83,7 @@ public class TrackerTest {
         tracker.add(item3);
         boolean result = tracker.replace(item1.getId(), new Item("replaced"));
         String expected = "replaced";
-        assertThat(tracker.findByName("replaced")[0].getName(), is(expected));
+        assertThat(tracker.findByName("replaced").get(0).getName(), is(expected));
     }
 
     @Test
@@ -91,8 +95,8 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        boolean result = tracker.delete(tracker.findByName("test1")[0].getId());
-        Item[] expected = {item2, item3};
+        boolean result = tracker.delete(tracker.findByName("test1").get(0).getId());
+        List<Item> expected = Arrays.asList(item2, item3);
         assertThat(expected, is(tracker.findAll()));
     }
 }
