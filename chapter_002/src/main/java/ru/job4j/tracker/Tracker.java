@@ -95,9 +95,7 @@ public class Tracker {
         boolean result = false;
         for (int i = 0; i < this.items.size(); i++) {
             if (this.items.get(i).getId().equals(id)) {
-                this.items.remove(i);
-                this.items.add(i, item);
-                this.items.get(i).setId(id);
+                this.items.set(i, item).setId(id);
                 result = true;
                 break;
             }
