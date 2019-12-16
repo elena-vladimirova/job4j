@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
 import java.util.Random;
 
 public enum TrackerSingle1 {
@@ -21,6 +20,7 @@ public enum TrackerSingle1 {
         this.items[this.position++] = item;
         return item;
     }
+
     public Item findById(String id) {
         Item result = null;
         for (int i = 0; i < position; i++) {

@@ -1,14 +1,11 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Класс, описывающий заявки.
  *
  * @author Elena Vladimirova (avtobusova@mail.ru)
  */
-public class Item implements Comparable<Item>{
+public class Item implements Comparable<Item> {
     /**
      * Идентификатор заявки.
      */

@@ -31,20 +31,20 @@ public class StartUITest {
     @Test
     public void whenExit() {
         StubInput input = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
         assertThat(action.isCall(), is(true));
     }
 
     @Test
     public void whenPrtMenu() {
         StubInput input = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
@@ -58,7 +58,7 @@ public class StartUITest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindItemByNameAction act = new FindItemByNameAction();
-        act.execute(new StubInput(new String[] {"fix bug"}), tracker);
+        act.execute(new StubInput(new String[]{"fix bug"}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("=== Find items by name ====")
                 .add(item.getId() + " : " + item.getName())

@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class FindItemByNameTest {
 
@@ -20,7 +20,7 @@ public class FindItemByNameTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindItemByNameAction act = new FindItemByNameAction();
-        act.execute(new StubInput(new String[] {"fix bug"}), tracker);
+        act.execute(new StubInput(new String[]{"fix bug"}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("=== Find items by name ====")
                 .add(item.getId() + " : " + item.getName())

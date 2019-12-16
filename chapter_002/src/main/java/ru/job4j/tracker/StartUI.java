@@ -25,7 +25,7 @@ public class StartUI {
                 run = action.execute(input, tracker);
             } else {
                 System.out.println("There is no such menu item: " + select);
-                }
+            }
         }
     }
 

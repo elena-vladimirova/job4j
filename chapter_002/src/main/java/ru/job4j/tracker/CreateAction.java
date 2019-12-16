@@ -2,8 +2,8 @@ package ru.job4j.tracker;
 
 public class CreateAction extends BaseAction {
 
-    public CreateAction(){
-       super("=== Add new Item ====");
+    public CreateAction() {
+        super("=== Add new Item ====");
     }
 
     @Override

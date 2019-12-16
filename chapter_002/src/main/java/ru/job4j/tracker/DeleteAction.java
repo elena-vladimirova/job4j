@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class DeleteAction extends BaseAction {
 
-    public DeleteAction(){
+    public DeleteAction() {
         super("=== Delete item ====");
     }
 

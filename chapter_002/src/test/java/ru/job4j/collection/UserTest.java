@@ -2,12 +2,15 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class UserTest {
     @Test
@@ -19,6 +22,7 @@ public class UserTest {
         assertThat(it.next(), is(new User("Ivan", 31)));
         assertThat(it.next(), is(new User("Petr", 32)));
     }
+
     @Test
     public void whenAscByAge() {
         Set<User> users = new TreeSet<>();
