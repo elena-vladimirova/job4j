@@ -6,15 +6,18 @@ public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
         int result = 0;
-        int size = Math.max(left.length(), right.length());
-        char[] leftChar = String.format("%-" + size + "s", left).toCharArray();
-        char[] rightChar = String.format("%-" + size + "s", right).toCharArray();
-        for (int i = 0; i < size; i++) {
-            result = Character.compare(leftChar[i], rightChar[i]);
-            if (result != 0) {
-                break;
-            }
+        int minLength = Math.min(left.length(), right.length());
+        int idx = 0;
+        while (idx < minLength && result == 0) {
+            result = left.charAt(idx) - right.charAt(idx);
+            idx++;
         }
-        return result;
+        int deltaLength = left.length() - right.length();
+        return (result == 0 && deltaLength != 0) ? deltaLength : result;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new StringCompare().compare("123", "12345"));
+    }
+
 }

@@ -57,4 +57,13 @@ public class StringCompareTest {
         );
         assertThat(rst, lessThan(0));
     }
+    @Test
+    public void when123compareTo12345ThenMinus2() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "123",
+                "12345"
+        );
+        assertThat(rst, is(-2));
+    }
 }
