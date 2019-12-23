@@ -26,11 +26,11 @@ public class DepartmentsTest {
         assertThat(result, is(expect));
     }
 
-/*    @Test
+    @Test
     public void whenSortDesc() {
-        List<String> result = Arrays.asList("K1","K1/SK2","K1/SK1","K2","K2/SK1","K2/SK1/SSK2","K2/SK1/SSK1","K1/SK1/SSK2","K1/SK1/SSK1");
-        List<String> expect = Arrays.asList("K2","K2/SK1","K2/SK1/SSK2","K2/SK1/SSK1","K1","K1/SK2","K1/SK1","K1/SK1/SSK2","K1/SK1/SSK1");
+        List<String> result = Arrays.asList("K1", "K1/SK2", "K1/SK1", "K2", "K2/SK1", "K2/SK1/SSK2", "K2/SK1/SSK1", "K1/SK1/SSK2", "K1/SK1/SSK1");
+        List<String> expect = Arrays.asList("K2", "K2/SK1", "K2/SK1/SSK2", "K2/SK1/SSK1", "K1", "K1/SK2", "K1/SK1", "K1/SK1/SSK2", "K1/SK1/SSK1");
         Departments.sortDesc(result);
         assertThat(result, is(expect));
-    }*/
+    }
 }

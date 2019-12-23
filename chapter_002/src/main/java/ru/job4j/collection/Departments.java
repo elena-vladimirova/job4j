@@ -9,7 +9,8 @@ public class Departments {
         for (String value : deps) {
             String start = "";
             for (String el : value.split("/")) {
-                 tmp.add(start += (start == "" ? "" : "/") + el);
+                start += (start == "" ? "" : "/") + el;
+                tmp.add(start);
             }
         }
         return new ArrayList<>(tmp);
@@ -20,8 +21,6 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        //orgs.sort(Comparator.naturalOrder());
-        Collections.sort(orgs, Collections.reverseOrder());
+        Collections.sort(orgs, new DepDescComp());
     }
-
 }
