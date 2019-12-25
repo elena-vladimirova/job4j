@@ -14,7 +14,7 @@ public class StartUI {
      *
      * @param input   интерфейс для работы с системой ввода-вывода
      * @param tracker объект Tracker
-     * @param actions список
+     * @param actions список действий
      * @param output параметр указывает, куда выводить данные
      */
     public void init(Input input, Tracker tracker, UserAction[] actions, Consumer<String> output) {

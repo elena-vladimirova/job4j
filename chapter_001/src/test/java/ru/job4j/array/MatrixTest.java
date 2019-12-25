@@ -9,7 +9,7 @@ public class MatrixTest {
     @Test
     public void when2on2() {
         Matrix matrix = new Matrix();
-        int[][] table = matrix.multiple(3);
+        int[][] table = Matrix.multiple(3);
         int[][] expect = {
                 {1, 2, 3},
                 {2, 4, 6},
