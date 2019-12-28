@@ -2,10 +2,7 @@ package ru.job4j.stream;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -62,6 +59,19 @@ public class SchoolTest {
         Map<String, Student> expected = new HashMap();
         expected.put("Lena", s1);
         expected.put("Petr", s2);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenLevelOf() {
+        School school = new School();
+        Student s1 = new Student("Lena", 50);
+        Student s2 = new Student("Petr", 30);
+        Student s3 = new Student("Andrei", 20);
+        Student s4 = new Student("Rail", 100);
+        List<Student> list = Arrays.asList(s1, s2, null, s3, s4);
+        List<Student> result = school.levelOf(list, 30);
+        List<Student> expected = Arrays.asList(s4, s1);
         assertThat(result, is(expected));
     }
 }
