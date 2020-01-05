@@ -58,5 +58,17 @@ public class EvenIteratorTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(8));
     }
+
+    @Test
+    public void whenEmptyArrayThanHasNextFalse() {
+        Iterator<Integer> i = new EvenIterator(new int[]{});
+        assertThat(i.hasNext(), is(false));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenEmptyArrayThanNextFails(){
+        Iterator<Integer> i = new EvenIterator(new int[]{});
+        i.next();
+    }
 }
 
