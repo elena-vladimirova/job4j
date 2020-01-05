@@ -66,7 +66,7 @@ public class EvenIteratorTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void whenEmptyArrayThanNextFails(){
+    public void whenEmptyArrayThanNextFails() {
         Iterator<Integer> i = new EvenIterator(new int[]{});
         i.next();
     }
