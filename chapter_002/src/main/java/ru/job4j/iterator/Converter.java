@@ -33,8 +33,7 @@ public class Converter {
 
             @Override
             public Integer next() {
-                setCurrentIterator();
-                if (currentIterator == null) {
+                if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 return currentIterator.next();
