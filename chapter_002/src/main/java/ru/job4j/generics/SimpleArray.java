@@ -1,5 +1,6 @@
 package ru.job4j.generics;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class SimpleArray<E> implements Iterable<E> {
@@ -30,6 +31,10 @@ public class SimpleArray<E> implements Iterable<E> {
     public void remove(int position) {
         System.arraycopy(this.objects, position + 1, this.objects, position, this.objects.length - position - 1);
         this.set(index-- - 1, null);
+    }
+
+    public int getPosition(E value) {
+        return Arrays.asList(this.objects).indexOf(value);
     }
 
     @Override
