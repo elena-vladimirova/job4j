@@ -1,5 +1,6 @@
 package ru.job4j.generics;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Iterator;
 
 public class SimpleArray<E> implements Iterable<E> {
@@ -45,5 +46,15 @@ public class SimpleArray<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new SimpleArrayIterator<>(this);
+    }
+
+    public void printObjectType() {
+        Class<E> t = (Class<E>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        System.out.println(t.toString());
+    }
+
+    public static void main(String[] args) {
+        SimpleArray<String> s = new SimpleArray<>(5);
+        s.printObjectType();
     }
 }
