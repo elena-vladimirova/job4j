@@ -1,6 +1,5 @@
 package ru.job4j.generics;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class SimpleArray<E> implements Iterable<E> {
@@ -34,7 +33,13 @@ public class SimpleArray<E> implements Iterable<E> {
     }
 
     public int getPosition(E value) {
-        return Arrays.asList(this.objects).indexOf(value);
+        int result = -1;
+        for (int i = 0; i < index; i++) {
+            if (this.objects[i] == value) {
+                result = i;
+            }
+        }
+        return result;
     }
 
     @Override
