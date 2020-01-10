@@ -1,9 +1,9 @@
 package ru.job4j.generics;
 
-public class UserStore extends AbstractStore {
+public class UserStore extends AbstractStore<User> {
 
     public UserStore(int size) {
-        super(new SimpleArray<User>(size));
+        super(new SimpleArray<>(size));
     }
 
 }
