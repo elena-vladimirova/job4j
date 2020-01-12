@@ -24,7 +24,10 @@ public class SimpleArrayList<E> {
      */
     public E delete() {
         E result = first.data;
+        Node<E> deletedNode = first;
         this.first = first.next;
+        deletedNode.next = null;
+        deletedNode.data = null;
         return result;
     }
 
