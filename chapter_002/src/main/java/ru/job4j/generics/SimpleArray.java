@@ -49,8 +49,8 @@ public class SimpleArray<E> implements Iterable<E> {
     }
 
     public void printObjectType() {
-        Class<E> t = (Class<E>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        System.out.println(t.toString());
+        //Class<E> t = (Class<E>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        //System.out.println(t.toString());
     }
 
     public static void main(String[] args) {
