@@ -4,7 +4,7 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SimpleDynamicArrayIterator <E> implements Iterator<E> {
+public class SimpleDynamicArrayIterator<E> implements Iterator<E> {
 
     private SimpleDynamicArray<E> simpleDynamicArray;
     private int index = 0;

@@ -19,7 +19,7 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
         return modCount;
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.index;
     }
 

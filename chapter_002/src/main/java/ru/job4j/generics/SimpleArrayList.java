@@ -1,12 +1,15 @@
 package ru.job4j.generics;
 
+import java.util.Iterator;
+
 /**
  * Класс SimpleArrayList.
  */
-public class SimpleArrayList<E> {
+public class SimpleArrayList<E> implements Iterable<E> {
 
     private int size;
     private Node<E> first;
+    private int modCount = 0;
 
     /**
      * Метод вставляет в начало списка данные.
@@ -16,6 +19,7 @@ public class SimpleArrayList<E> {
         newLink.next = this.first;
         this.first = newLink;
         this.size++;
+        this.modCount++;
     }
 
     /**
@@ -28,6 +32,8 @@ public class SimpleArrayList<E> {
         this.first = first.next;
         deletedNode.next = null;
         deletedNode.data = null;
+        this.size--;
+        this.modCount++;
         return result;
     }
 
@@ -49,16 +55,30 @@ public class SimpleArrayList<E> {
         return this.size;
     }
 
+    public Node<E> getFirst() {
+        return first;
+    }
+
+    /**
+     * Метод получения счетчика изменений.
+     */
+    public int getModCount() {
+        return modCount;
+    }
+
     /**
      * Класс предназначен для хранения данных.
      */
-    private static class Node<E> {
-
+    public static class Node<E> {
         E data;
         Node<E> next;
-
         Node(E data) {
             this.data = data;
         }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new SimpleArrayListIterator<>(this);
     }
 }
