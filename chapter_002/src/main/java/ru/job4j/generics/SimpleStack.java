@@ -14,9 +14,13 @@ public class SimpleStack<T> {
         return values.delete();
     }
     /**
-     * Метод возвращает значение и удаляет его из контейнера.
+     * Метод помещает значение в контейнер.
      */
     public void push(T value) {
         values.add(value);
+    }
+
+    public int getSize() {
+        return values.getSize();
     }
 }
