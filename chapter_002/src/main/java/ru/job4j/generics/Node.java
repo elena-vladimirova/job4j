@@ -15,7 +15,7 @@ class Node<T> {
      * @param first - первый элемент списка
      * @return true, если список цикличный
      */
-    public static boolean hasCycle(Node first){
+    public static boolean hasCycle(Node first) {
         boolean result = false;
         Node turtle = first;
         Node hare = first;
