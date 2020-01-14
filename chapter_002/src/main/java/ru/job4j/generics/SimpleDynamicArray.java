@@ -10,6 +10,10 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
     private int index = 0;
     private int modCount = 0;
 
+    public SimpleDynamicArray() {
+        this.objects = new Object[size];
+    }
+
     private void increaseObjectsSize() {
         this.size *= 2;
         this.objects = Arrays.copyOf(this.objects, size);
@@ -21,10 +25,6 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
 
     public int getSize() {
         return this.index;
-    }
-
-    public SimpleDynamicArray() {
-        this.objects = new Object[size];
     }
 
     public void add(E value) {
