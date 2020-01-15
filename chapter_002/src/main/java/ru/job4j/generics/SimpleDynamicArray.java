@@ -39,6 +39,21 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
         return (E) this.objects[position];
     }
 
+    public int getPosition(E value) {
+        int result = -1;
+        for (int i = 0; i < index; i++) {
+            if (this.objects[i] == value) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public boolean contains(E value) {
+        return getPosition(value) != -1;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new SimpleDynamicArrayIterator<>(this);
