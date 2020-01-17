@@ -42,7 +42,7 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
     public int getPosition(E value) {
         int result = -1;
         for (int i = 0; i < index; i++) {
-            if (this.objects[i] == value) {
+            if (this.objects[i].equals(value)) {
                 result = i;
                 break;
             }
@@ -58,5 +58,4 @@ public class SimpleDynamicArray<E> implements Iterable<E> {
     public Iterator<E> iterator() {
         return new SimpleDynamicArrayIterator<>(this);
     }
-
 }
