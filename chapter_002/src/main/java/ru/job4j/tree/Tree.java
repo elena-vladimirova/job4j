@@ -50,7 +50,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         boolean result = true;
         Iterator<Node<E>> it = new TreeNodeIterator(this.getRoot());
         while (it.hasNext()) {
-            if (it.next().leaves().size() > 3) {
+            if (it.next().leaves().size() <= 2) {
                 result = false;
                 break;
             }
