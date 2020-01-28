@@ -4,27 +4,25 @@ import java.util.*;
 
 public class TreeIterator<E extends Comparable<E>> implements Iterator<E> {
 
-    E currentElement;
     Queue<Node<E>> nodes = new LinkedList<>();
 
     public TreeIterator(Node<E> root) {
         this.nodes.add(root);
-        setCurrentElement();
     }
 
-    private void setCurrentElement() {
-        Node<E> currentNode = nodes.poll();
-        if (currentNode != null) {
-            currentElement = currentNode.getValue();
+    private E getElement() {
+        E result = null;
+        if (this.hasNext()) {
+            Node<E> currentNode = nodes.poll();
+            result = currentNode.getValue();
             this.nodes.addAll(currentNode.leaves());
-        } else {
-            currentElement = null;
         }
+        return result;
     }
 
     @Override
     public boolean hasNext() {
-        return currentElement != null;
+        return this.nodes.size() > 0;
     }
 
     @Override
@@ -32,8 +30,6 @@ public class TreeIterator<E extends Comparable<E>> implements Iterator<E> {
         if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
-        E result = currentElement;
-        setCurrentElement();
-        return result;
+        return getElement();
     }
 }

@@ -73,7 +73,7 @@ public class TreeTest {
         tree.add(1, 2);
         tree.add(1, 3);
         tree.add(1, 4);
-        assertThat(true, is(tree.isBinary()));
+        assertThat(false, is(tree.isBinary()));
     }
 }
 
