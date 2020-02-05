@@ -28,7 +28,7 @@ public class SearchTest {
             }
         };
         assertThat(expected,
-                   is(Search.files("Job4JTest", predicate))
+                   is(Search.files(System.getProperty("java.io.tmpdir") + "Job4JTest", predicate))
         );
     }
 }

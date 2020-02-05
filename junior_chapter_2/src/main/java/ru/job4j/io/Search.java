@@ -18,7 +18,7 @@ public class Search {
     public static List<File> files(String parent, Predicate check) {
         List<File> result = new LinkedList<>();
         Queue<File> filesQueue = new LinkedList<>();
-        filesQueue.offer(new File(System.getProperty("java.io.tmpdir"), parent));
+        filesQueue.offer(new File(parent));
         while (!filesQueue.isEmpty()) {
             File file = filesQueue.poll();
             if (file.isDirectory()) {
@@ -68,6 +68,6 @@ public class Search {
                 return ext.contains(getExtension(file.getName()));
             }
         };
-        Search.files("Job4JTest", predicate).stream().forEach(f -> System.out.println(f));
+        Search.files(System.getProperty("java.io.tmpdir") + "Job4JTest", predicate).stream().forEach(f -> System.out.println(f));
     }
 }
