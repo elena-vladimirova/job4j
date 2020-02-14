@@ -20,13 +20,14 @@ public class Client {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         Scanner console = new Scanner(System.in);
-        do {
-            out.println(console.nextLine());
+        String userInput;
+        while (!(userInput = console.nextLine()).equals("exit")) {
+            out.println(userInput);
             String str;
             while (!(str = in.readLine()).isEmpty()) {
                 System.out.println(str);
             }
-        } while (true);
+        }
     }
 
     public static void main(String[] args) {
