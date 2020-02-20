@@ -2,9 +2,7 @@ package ru.job4j.io.search;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.function.Predicate;
 
 /**
@@ -33,9 +31,15 @@ public class Search {
         Predicate<String> predicate;
         if (args.getMode() == Args.SearchMode.REGEXP) {
             predicate = n -> n.matches(args.getName());
+        } else if (args.getMode() == Args.SearchMode.MASK) {
+            predicate = n -> FileSystems.getDefault()
+                                        .getPathMatcher("glob:" + args.getName())
+                                        .matches(Paths.get(n));
         } else {
             predicate = n -> n.equals(args.getName());
         }
+
+
         try (PrintWriter out = new PrintWriter(args.getLog())) {
             Files.walk(path)
                  .filter(p -> Files.isRegularFile(p))
@@ -48,6 +52,7 @@ public class Search {
     public static void main(String[] args) throws IOException {
         // -d C:\projects\job4j\junior_chapter_2 -n Search.java -o C:\projects\job4j\junior_chapter_2\src\main\java\ru\job4j\io\search\log.txt
         // -d C:\projects\job4j\junior_chapter_2 -n .*ip\.java -r -o C:\projects\job4j\junior_chapter_2\src\main\java\ru\job4j\io\search\log.txt
+        // -d C:\projects\job4j\junior_chapter_2 -n *.java -m -o C:\projects\job4j\junior_chapter_2\src\main\java\ru\job4j\io\search\log.txt
         Args arguments = new Args(args);
         Search search = new Search(arguments);
         search.search();

@@ -2,7 +2,7 @@ package ru.job4j.io.search;
 
 public class Args {
 
-    enum SearchMode {REGEXP, FULLNAME};
+    enum SearchMode {REGEXP, FULLNAME, MASK};
 
     private String directory;
     private String name;
@@ -42,10 +42,13 @@ public class Args {
                     name = args[++i];
                     break;
                 case ("-f"):
-                    //mode = SearchMode.FULLNAME;
+                    mode = SearchMode.FULLNAME;
                     break;
                 case ("-r"):
                     mode = SearchMode.REGEXP;
+                    break;
+                case ("-m"):
+                    mode = SearchMode.MASK;
                     break;
                 case ("-o"):
                     log = args[++i];
