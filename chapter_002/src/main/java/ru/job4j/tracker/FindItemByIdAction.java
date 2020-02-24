@@ -7,7 +7,7 @@ public class FindItemByIdAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, ITracker tracker) {
         System.out.println("=== Find item by Id ====");
         String idToFind = input.askStr("Enter id: ");
         System.out.println(tracker.findById(idToFind));

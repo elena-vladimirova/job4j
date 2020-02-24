@@ -9,7 +9,7 @@ import java.util.Random;
  *
  * @author Elena Vladimirova (avtobusova@mail.ru)
  */
-public class Tracker {
+public class Tracker implements ITracker {
 
     /**
      * Массив для хранение заявок.
@@ -121,7 +121,7 @@ public class Tracker {
     }
 
     public static void main(String[] args) {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item i = tracker.findById("11");
 
     }

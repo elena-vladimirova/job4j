@@ -7,7 +7,7 @@ public class DeleteAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, ITracker tracker) {
         String idToDelete = input.askStr("Enter id: ");
         boolean deleted = tracker.delete(idToDelete);
         System.out.println(deleted ? "Item deleted" : "Item not deleted");

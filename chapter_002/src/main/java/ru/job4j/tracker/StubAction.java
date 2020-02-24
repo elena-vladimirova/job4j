@@ -9,7 +9,7 @@ public class StubAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, ITracker tracker) {
         call = true;
         return false;
     }

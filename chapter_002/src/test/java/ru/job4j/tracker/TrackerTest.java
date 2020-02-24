@@ -13,7 +13,7 @@ public class TrackerTest {
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item = new Item("test");
         tracker.add(item);
         Item result = tracker.findById(item.getId());
@@ -22,7 +22,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindByNameThenReturnItems() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test1");
         Item item3 = new Item("test3");
@@ -38,7 +38,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindByNameThenReturnNull() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
         Item item3 = new Item("test3");
@@ -52,7 +52,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindAllThenReturnItems() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
         Item item3 = new Item("test3");
@@ -66,7 +66,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindAllThenReturnNull() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         List<Item> expected = new ArrayList();
         List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
@@ -74,7 +74,7 @@ public class TrackerTest {
 
     @Test
     public void whenReplaceThenReplaced() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
         Item item3 = new Item("test3");
@@ -88,7 +88,7 @@ public class TrackerTest {
 
     @Test
     public void whenDelete() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
         Item item3 = new Item("test3");

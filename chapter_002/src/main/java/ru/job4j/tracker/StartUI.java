@@ -17,7 +17,7 @@ public class StartUI {
      * @param actions список действий
      * @param output параметр указывает, куда выводить данные
      */
-    public void init(Input input, Tracker tracker, UserAction[] actions, Consumer<String> output) {
+    public void init(Input input, ITracker tracker, UserAction[] actions, Consumer<String> output) {
 
         boolean run = true;
         while (run) {
@@ -45,7 +45,7 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(),
                 new ShowItemsAction(),

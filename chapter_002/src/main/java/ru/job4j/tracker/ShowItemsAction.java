@@ -7,7 +7,7 @@ public class ShowItemsAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, ITracker tracker) {
         for (Item i : tracker.findAll()) {
             System.out.println(i);
         }
