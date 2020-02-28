@@ -15,8 +15,8 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
     private Connection connection;
 
-    public TrackerSQL() {
-        this.init();
+    public TrackerSQL(Connection connection) {
+        this.connection = connection;
     }
 
     public boolean init() {
@@ -33,10 +33,10 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(
-                        "create table if not exists items (\n" +
-                        "    id serial primary key,\n" +
-                        "\tname varchar(4000)\n" +
-                        ");");
+                        "create table if not exists items (\n"
+                                + "    id serial primary key,\n"
+                                + "\tname varchar(4000)\n"
+                                + ");");
             }
         } catch (Exception e) {
             throw new IllegalStateException(e);
@@ -96,7 +96,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     private List<Item> find(PreparedStatement prepStmt) throws SQLException {
         List<Item> result = new ArrayList<>();
         ResultSet rs = prepStmt.executeQuery();
-        while(rs.next()) {
+        while (rs.next()) {
             long id = rs.getLong("id");
             String name = rs.getString("name");
             result.add(new Item(Long.toString(id), name));
@@ -142,12 +142,12 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         return result != null ? result.get(0) : null;
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         ITracker tracker = new TrackerSQL();
         Item item = new Item("first");
         tracker.add(item);
         System.out.println(item.getId());
-        System.out.println(tracker.replace("1", new Item("first_upd") ));
+        System.out.println(tracker.replace("1", new Item("first_upd")));
         tracker.add(new Item("second"));
         tracker.add(new Item("first_upd"));
         tracker.add(new Item("fourth"));
@@ -156,5 +156,5 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         tracker.findAll().forEach(i->System.out.println(i));
         tracker.findByName("first_upd").forEach(i->System.out.println(i));
         System.out.println(tracker.findById("4"));
-    }
+    }*/
 }

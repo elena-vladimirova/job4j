@@ -36,7 +36,7 @@ public class EmailTest {
         );
         Map<String, Set<String>> merged = Email2.merge(users);
         Map<String, Set<String>> expected = Map.of("user1", Set.of("aaa@bbb.ru", "ups@pisem.net", "lol@mail.ru", "xxx@ya.ru", "foo@gmail.com"),
-                "user3",Set.of("vasya@pupkin.com", "xyz@pisem.net"));
+                "user3", Set.of("vasya@pupkin.com", "xyz@pisem.net"));
         assertThat(expected, is(merged));
     }
 

@@ -58,7 +58,7 @@ public class StoreSQL implements AutoCloseable {
         List<StoreXML.Entry> result = new LinkedList<>();
         try (Statement stmt = connect.createStatement()) {
             ResultSet rs = stmt.executeQuery("select * from entry");
-            while(rs.next()) {
+            while (rs.next()) {
                 result.add(new StoreXML.Entry(rs.getInt("field")));
             }
 

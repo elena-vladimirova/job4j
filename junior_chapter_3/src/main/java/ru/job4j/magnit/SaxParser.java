@@ -18,6 +18,6 @@ public class SaxParser extends DefaultHandler {
     }
 
     public double getAvg() {
-        return sum/count;
+        return sum / count;
     }
 }
