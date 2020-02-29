@@ -11,8 +11,8 @@
     <modules>
         <module>chapter_001</module>
         <module>chapter_002</module>
-        <module>junior_chapter_2</module>
         <module>junior_chapter_3</module>
+        <module>junior_chapter_2</module>
     </modules>
 
     <properties>
