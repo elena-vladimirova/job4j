@@ -37,21 +37,19 @@ public class StoreSQL implements AutoCloseable {
         }
     }
 
-    private void insert(int i) {
+    public void generate(int size) {
+        delete();
         String insert = "insert into entry (field) values(?)";
         try (PreparedStatement pstmt = connect.prepareStatement(insert)) {
-            pstmt.setInt(1, i);
-            pstmt.executeUpdate();
+            for (int i = 1; i <= size; i++) {
+                pstmt.setInt(1, i);
+                pstmt.addBatch();
+            }
+            pstmt.executeBatch();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    }
 
-    public void generate(int size) {
-        delete();
-        for (int i = 1; i <= size; i++) {
-            insert(i);
-        }
     }
 
     public List<StoreXML.Entry> load() {

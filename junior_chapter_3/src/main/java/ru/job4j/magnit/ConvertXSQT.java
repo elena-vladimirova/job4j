@@ -32,7 +32,7 @@ public class ConvertXSQT {
         SAXParser parser = factory.newSAXParser();
         SaxParser saxp = new SaxParser();
         parser.parse(input, saxp);
-        System.out.println(saxp.getAvg());
+        System.out.println(String.valueOf(saxp.getAvg()));
     }
 
     public static void main(String[] args) throws Exception {
@@ -40,7 +40,7 @@ public class ConvertXSQT {
         Config config = new Config();
         config.init();
         StoreSQL storeSql = new StoreSQL(config);
-        storeSql.generate(3);
+        storeSql.generate(4);
 
         StoreXML storeXML = new StoreXML(new File("C:\\sqlite\\db\\entry.xml"));
         storeXML.save(storeSql.load());
