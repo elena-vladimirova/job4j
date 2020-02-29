@@ -13,9 +13,9 @@ import java.util.Random;
 
 public class Chat {
 
-    private static final String stopWord = "стоп";
-    private static final String continueWord = "продолжить";
-    private static final String finishWord = "закончить";
+    private static String stopWord = "стоп";
+    private static String continueWord = "продолжить";
+    private static String finishWord = "закончить";
     private static List<String> chatText = new LinkedList<>();
     private Path answers;
     private File log;
@@ -44,7 +44,7 @@ public class Chat {
 
     private void writeLog() {
         try (PrintWriter out = new PrintWriter(new FileOutputStream(log))) {
-            for (String line : this.chatText){
+            for (String line : this.chatText) {
                 out.println(line);
             }
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class Chat {
 
     public void start() {
         Console console = System.console();
-        if(console == null) {
+        if (console == null) {
             throw new RuntimeException("Console not available");
         } else {
             try {
@@ -69,7 +69,7 @@ public class Chat {
                     } else if (input.equals(continueWord)) {
                         putAnswer = true;
                     }
-                    if (putAnswer == true) {
+                    if (putAnswer) {
                         write(console, "Bot: " + getAnswer(answer));
                     }
                 } while (!input.equals(finishWord));

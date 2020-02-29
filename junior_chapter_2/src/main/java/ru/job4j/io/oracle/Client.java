@@ -33,7 +33,7 @@ public class Client {
     public static void main(String[] args) {
         try (Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 5000)) {
             new Client(socket).start();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

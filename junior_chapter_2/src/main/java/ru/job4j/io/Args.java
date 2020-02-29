@@ -33,6 +33,7 @@ public class Args {
                 case ("-o"):
                     output = args[++i];
                     break;
+                default:
             }
             i++;
         }

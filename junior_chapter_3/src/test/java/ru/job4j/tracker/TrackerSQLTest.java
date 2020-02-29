@@ -69,7 +69,8 @@ public class TrackerSQLTest {
         List<Item> expected = new ArrayList();
         List<Item> result = tracker.findByName("test4");
         assertThat(expected, is(result));
-    }}
+    }
+    }
 
     @Test
     public void whenFindAllThenReturnItems() throws Exception {
@@ -83,7 +84,8 @@ public class TrackerSQLTest {
         List<Item> expected = Arrays.asList(item1, item2, item3);
         List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
-    }}
+    }
+    }
 
     @Test
     public void whenFindAllThenReturnNull() throws Exception {
@@ -91,7 +93,8 @@ public class TrackerSQLTest {
         List<Item> expected = new ArrayList();
         List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
-    }}
+    }
+    }
 
     @Test
     public void whenReplaceThenReplaced() throws Exception {
@@ -105,7 +108,8 @@ public class TrackerSQLTest {
         boolean result = tracker.replace(item1.getId(), new Item("replaced"));
         String expected = "replaced";
         assertThat(tracker.findByName("replaced").get(0).getName(), is(expected));
-    }}
+    }
+    }
 
     @Test
     public void whenDelete() throws Exception {
@@ -119,5 +123,6 @@ public class TrackerSQLTest {
         boolean result = tracker.delete(tracker.findByName("test1").get(0).getId());
         List<Item> expected = Arrays.asList(item2, item3);
         assertThat(expected, is(tracker.findAll()));
-    }}
+    }
+    }
 }

@@ -2,7 +2,7 @@ package ru.job4j.io.search;
 
 public class Args {
 
-    enum SearchMode {REGEXP, FULLNAME, MASK};
+    enum SearchMode { REGEXP, FULLNAME, MASK };
 
     private String directory;
     private String name;
@@ -26,12 +26,12 @@ public class Args {
     }
 
     public Args(String[] args) {
-        String msg = "Correct arguments:\n" +
-                "-d search directory\n" +
-                "-n file name or regular expression\n" +
-                "-f search mode - complete match (default)\n" +
-                "-r search mode - regular expression\n" +
-                "-o result file";
+        String msg = "Correct arguments:\n"
+               + "-d search directory\n"
+               + "-n file name or regular expression\n"
+               + "-f search mode - complete match (default)\n"
+               + "-r search mode - regular expression\n"
+               + "-o result file";
         int i = 0;
         while (i < args.length) {
             switch (args[i]) {

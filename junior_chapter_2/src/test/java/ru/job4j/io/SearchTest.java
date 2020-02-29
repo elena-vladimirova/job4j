@@ -22,7 +22,7 @@ public class SearchTest {
         Predicate<File> predicate = new Predicate() {
             @Override
             public boolean test(Object o) {
-                File file = (File)o;
+                File file = (File) o;
                 Set<String> ext = Set.of("txt", "java");
                 return ext.contains(Search.getExtension(file.getName()));
             }

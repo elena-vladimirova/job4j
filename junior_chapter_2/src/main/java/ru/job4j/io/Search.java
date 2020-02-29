@@ -36,7 +36,7 @@ public class Search {
         return result;
     }
 
-    public static List<File> files_old(String parent, Set<String> exts) {
+    public static List<File> filesOld(String parent, Set<String> exts) {
         List<File> result = new LinkedList<>();
         Queue<File> filesQueue = new LinkedList<>();
         filesQueue.offer(new File(System.getProperty("java.io.tmpdir"), parent));
@@ -63,7 +63,7 @@ public class Search {
         Predicate<File> predicate = new Predicate() {
             @Override
             public boolean test(Object o) {
-                File file = (File)o;
+                File file = (File) o;
                 Set<String> ext = Set.of("txt", "java");
                 return ext.contains(getExtension(file.getName()));
             }
