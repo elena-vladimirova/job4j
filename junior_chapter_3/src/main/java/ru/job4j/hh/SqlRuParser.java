@@ -65,6 +65,17 @@ public class SqlRuParser /*implements Job*/ {
         List<Vacancy> listVacancies = new LinkedList<>();
         // URL SQL.ru с параметрами поиска Java вакансий
         Document SqlRu = Jsoup.connect("https://www.sql.ru/forum/actualsearch.aspx?search=Java~Script&sin=1&bid=9&a=&ma=0&dt=356&s=1&so=2&pg=1").get();
+        // Список страниц
+        Iterator<Element> pages = SqlRu.select(".forumtable_results").get(1).select("a").iterator();
+        boolean hasNewVacancies = add(listVacancies, SqlRu);
+        while (hasNewVacancies && pages.hasNext()) {
+            SqlRu = Jsoup.connect("https://www.sql.ru/forum/" + pages.next().attr("href")).get();
+            hasNewVacancies = add(listVacancies, SqlRu);
+        }
+        return listVacancies;
+    }
+
+    private boolean add(List<Vacancy> listVacancies, Document SqlRu) throws Exception {
         // Элементы поля "Тема" основной таблицы страницы. Содержат ссылки на вакансии
         Elements vacancies = SqlRu.select(".postslisttopic");
         for (Element vacancy : vacancies) {
@@ -73,7 +84,7 @@ public class SqlRuParser /*implements Job*/ {
             // Дата создания вакансии
             Date dt = parseDate(vacancy.nextElementSiblings().get(4).text());
             if (new java.sql.Date(dt.getTime()).before(storage.getMaxDate())) {
-                break;
+                return false;
             }
             String link = vacancyLink.attr("href");
             String name = vacancyLink.text();
@@ -85,7 +96,7 @@ public class SqlRuParser /*implements Job*/ {
             Vacancy vacancyObj = new Vacancy(name, text, link, dt);
             listVacancies.add(vacancyObj);
         }
-        return listVacancies;
+        return true;
     }
 
     public void store(List<Vacancy> vacancies) {

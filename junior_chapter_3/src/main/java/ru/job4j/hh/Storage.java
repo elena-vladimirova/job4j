@@ -35,6 +35,7 @@ public class Storage implements AutoCloseable {
                     config.value("username"),
                     config.value("password")
             );
+            this.connection.setAutoCommit(false);
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(
                         "create table if not exists vacancies (\n"
@@ -68,8 +69,16 @@ public class Storage implements AutoCloseable {
                 pstmt.addBatch();
             }
             pstmt.executeBatch();
+            this.connection.commit();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            try{
+                if(this.connection!=null){
+                    this.connection.rollback();
+                }
+            }catch(SQLException ee){
+                ee.printStackTrace();
+            }
         }
     }
 
