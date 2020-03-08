@@ -45,7 +45,7 @@ import static org.quartz.DateBuilder.*;
  * Класс SqlRuParser парсит страницу вакансий сайта SQL.ru, формирует объекты Vacancy и вызывает методы записи вакансий в БД.
  *
  */
-public class SqlRuParser implements Job {
+public class SqlRuParser /*implements Job*/ {
 
     private static final Logger LOG = LogManager.getLogger(UsageLog4j2.class.getName());
 
@@ -102,7 +102,7 @@ public class SqlRuParser implements Job {
     }
 
     // Запуск сбора вакансий
-    @Override
+/*    @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
         JobDataMap dataMap = context.getJobDetail().getJobDataMap();
@@ -115,13 +115,13 @@ public class SqlRuParser implements Job {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     public static void main(String[] args) throws Exception {
 
-        // Запуск с параметром app.properties
+        // Запуск с параметром C:\projects\job4j\junior_chapter_3\src\main\resources\app.properties
 
-        SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
+/*        SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
         Scheduler sched = schedFact.getScheduler();
         sched.start();
 
@@ -137,7 +137,14 @@ public class SqlRuParser implements Job {
                 .startNow()
                 .build();
 
-        sched.scheduleJob(job, trigger);
+        sched.scheduleJob(job, trigger);*/
+
+        SqlRuParser parser = new SqlRuParser(new Storage(args[0]));
+        try {
+            parser.store(parser.collect());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

@@ -13,6 +13,7 @@ import java.util.Properties;
  */
 public class Storage implements AutoCloseable {
 
+    private Config config;
     private Connection connection;
 
     public Storage(String prop) {
@@ -25,15 +26,14 @@ public class Storage implements AutoCloseable {
     }
 
     private boolean init(String prop) {
-        try (InputStream in = Storage.class.getClassLoader().getResourceAsStream(prop)) {
-
-            Properties config = new Properties();
-            config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
+        try {
+            config = new Config(prop);
+            config.load();
+            Class.forName(config.value("driver-class-name"));
             this.connection = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
+                    config.value("url"),
+                    config.value("username"),
+                    config.value("password")
             );
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(
