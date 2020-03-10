@@ -1,23 +1,21 @@
 package ru.job4j.hh;
 
-import java.io.InputStream;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Класс для работы с БД (запросы к БД, запись информации о вакансиях)
  */
-public class Storage implements AutoCloseable {
+public class Storage implements AutoCloseable, IStorage {
 
     private Config config;
     private Connection connection;
 
-    public Storage(String prop) {
-        init(prop);
+    public Storage() {
+        init();
     }
 
     @Override
@@ -25,9 +23,9 @@ public class Storage implements AutoCloseable {
         connection.close();
     }
 
-    private boolean init(String prop) {
+    private boolean init() {
         try {
-            config = new Config(prop);
+            config = new Config("junior_chapter_3\\src\\main\\resources\\app.properties");
             config.load();
             Class.forName(config.value("driver-class-name"));
             this.connection = DriverManager.getConnection(
@@ -52,7 +50,7 @@ public class Storage implements AutoCloseable {
         return this.connection != null;
     }
 
-    public void insert(List<Vacancy> vacancies) {
+    public void store(List<Vacancy> vacancies) {
         String insert = "insert into vacancies(name, text, link, dt)\n"
                            + "select ?, ?, ?, ?::timestamp\n"
                            +     "where not exists (select 1 from vacancies where name = ?);";
