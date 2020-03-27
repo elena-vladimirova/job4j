@@ -10,11 +10,11 @@ public class User {
         this.education = education;
     }
 
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("!!!finalize!!!" + this.name);
-    }
+    }*/
 
     public static void info() {
         Runtime runtime = Runtime.getRuntime();
@@ -23,13 +23,17 @@ public class User {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 4000; i++) {
-            System.out.println("---start---" + i);
-            info();
+        int i = 0;
+        while (true) {
+        //for (int i = 0; i <= 4000; i++) {
+            //System.out.println("---start---" + i);
+            //info();
+            i++;
             User user = new User("Lena" + i, "higher education");
-            info();
+            //info();
             user = null;
-            System.out.println("---finish---");
+            //System.out.println("---finish---");
         }
     }
 }
+
