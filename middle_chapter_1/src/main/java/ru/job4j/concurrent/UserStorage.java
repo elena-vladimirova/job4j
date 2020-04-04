@@ -15,15 +15,17 @@ public class UserStorage {
         users.put(user.id, user);
     }
 
+    @GuardedBy("this")
     public synchronized void transfer(int fromId, int toId, int amount) throws InterruptedException {
         User userFrom = users.get(fromId);
         User userTo = users.get(toId);
         while (userFrom.amount < amount) {
             wait();
-            userFrom.amount -= amount;
-            userTo.amount += amount;
-            notifyAll();
         }
+        userFrom.amount -= amount;
+        userTo.amount += amount;
+        notifyAll();
+
     }
 
     static class User {
@@ -39,7 +41,7 @@ public class UserStorage {
     public static void main(String[] args) {
         UserStorage store = new UserStorage();
         User user1 = new User(1, 10);
-        User user2 = new User(1, 10);
+        User user2 = new User(2, 10);
         store.add(user1);
         store.add(user2);
         try {
