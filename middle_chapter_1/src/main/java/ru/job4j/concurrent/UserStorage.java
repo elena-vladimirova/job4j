@@ -11,7 +11,8 @@ public class UserStorage {
 
     private Map<Integer, User> users = new HashMap();
 
-    public void add(User user) {
+    @GuardedBy("this")
+    public synchronized void add(User user) {
         users.put(user.id, user);
     }
 
@@ -25,14 +26,13 @@ public class UserStorage {
         userFrom.amount -= amount;
         userTo.amount += amount;
         notifyAll();
-
     }
 
     static class User {
-        public int id;
-        public int amount;
+        int id;
+        int amount;
 
-        public User(int id, int amount) {
+        User(int id, int amount) {
             this.id = id;
             this.amount = amount;
         }
