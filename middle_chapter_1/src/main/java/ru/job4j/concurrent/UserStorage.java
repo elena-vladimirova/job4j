@@ -9,14 +9,13 @@ import java.util.Map;
 @ThreadSafe
 public class UserStorage {
 
+    @GuardedBy("this")
     private Map<Integer, User> users = new HashMap();
 
-    @GuardedBy("this")
     public synchronized void add(User user) {
         users.put(user.id, user);
     }
 
-    @GuardedBy("this")
     public synchronized void transfer(int fromId, int toId, int amount) throws InterruptedException {
         User userFrom = users.get(fromId);
         User userTo = users.get(toId);
